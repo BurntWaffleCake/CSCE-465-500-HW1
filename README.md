@@ -1,3 +1,7 @@
+# Personal Setup
+
+Homework was complete on a Ubuntu 24.04.5.1 (Noble Numbat) Server image rather than Desktop image due to the performance impact of emulation. UTM was used to host the VM on a MacOS Apple Silicon device.
+
 # tamu-shim — TAMUS AI API compatibility shim for OpenClaw
 
 **Why:** OpenClaw's `openai-completions` adapter sends `"content": null` on assistant
@@ -5,7 +9,7 @@ messages that contain only tool calls (correct per the OpenAI spec). The TAMUS A
 Chat proxy validates `content` strictly and returns **HTTP 422** for `null` — which
 kills every multi-turn agent tool loop (all of Homework 1 Task 3). OpenClaw has no
 config flag that changes this (`compat.requiresStringContent` only flattens content
-*arrays*; `compat.strictMessageKeys` strips `tool_calls` and breaks tool use).
+_arrays_; `compat.strictMessageKeys` strips `tool_calls` and breaks tool use).
 
 **What this does:** a ~40-line local proxy (Node standard library, no dependencies —
 Node is already installed for OpenClaw). It rewrites `content: null → ""` in the
